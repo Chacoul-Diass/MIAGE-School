@@ -121,19 +121,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 MEDIA_URL = '/media/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 FILEBROWSER_MAX_UPLOAD_SIZE = 10485760 * 100
+FILEBROWSER_DIRECTORY = 'media_cdn/'
+DIRECTORY = 'media_cdn/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# if DEBUG:
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-if DEBUG:
-    FILEBROWSER_DIRECTORY = 'media_cdn/'
-    DIRECTORY = 'media_cdn/'
-
-    # STATIC AND MEDIA ROOT
-    STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
-    MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
+# STATIC AND MEDIA ROOT
+STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
