@@ -1,0 +1,106 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+    {% block menuNav %}
+        <ul class="nav">
+            <li class="main-button"><a href="#">Accueil</a></li>
+        </ul>
+    {% endblock %}
+
+{% block content %}
+    <section class="section" id="contact-us">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-6 col-xs-12">
+                    <div class="contact-form">
+                        <!-- id="contact" -->
+                        <form id="contact"   method="post" action="#" enctype="multipart/form-data">
+                            <div class="text-center" >
+                                <fieldset>
+                                    <img src="{% static 'assets/images/profile.png' %}" id="upload-img" style="height: 150px; width: 150px; border-radius: 100%">
+                                    <br>
+                                    <div class="custom-file col-md-2 col-sm-6">
+                                        <input name="file_profile" type="file" id="fileupload" required>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <br> <br>
+                            <input name="matricule" type="hidden">
+                          <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                              <fieldset>
+                                  <label for="name">Nom:</label>
+                                <input name="nom" type="text" id="name" placeholder="Nom" required>
+                              </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                              <fieldset>
+                                  <label for="prenom">Prénom(s):</label>
+                                <input name="prenom" type="text" id="prenom" placeholder="Prénom(s)" required>
+                              </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                              <fieldset>
+                                  <label for="ddn">Date de naissance:</label>
+                                <input name="date_naissance" type="date" id="ddn" placeholder="Date de naissance" required>
+                              </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <label for="ldn">Lieu de naissance:</label>
+                                    <input name="lieu_naissance" type="text" id="ldn" placeholder="Lieu de naissance" required>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <label for="tel">Contact:</label>
+                                    <input name="contact" type="tel" id="tel" placeholder="Contact" required>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <label for="email">Email:</label>
+                                    <input name="email" type="email" id="email" placeholder="Email" required>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <label for="identite">Pièce d'identité:</label>
+                                    <input name="piece_file" type="file" id="identite" required>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <label for="colante">Bulletin de note au BAC:</label>
+                                    <input name="bull_file" type="file" id="colante" required>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-12 text-center">
+                              <fieldset>
+                                <button type="submit" id="form-submit" class="main-button" style="width: 200px;">VALIDER</button>
+                              </fieldset>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(function(){
+            $("#fileupload").change(function(event) {
+                var x = URL.createObjectURL(event.target.files[0]);
+                $("#upload-img").attr("src",x);
+                console.log(event);
+            });
+        })
+    </script>
+{% endblock content %}
